@@ -1,29 +1,127 @@
-# Create T3 App
+# 🛍️ EzBuy — Sales Chatbot
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+> ⚠️ **Archived project.** This repository is no longer actively maintained and is open-sourced for reference and learning purposes.
 
-## What's next? How do I make an app with this?
+EzBuy is a sales-focused chatbot platform built with the T3 Stack. It allows businesses to create a conversational interface for their products, enabling customers to browse, ask questions, and complete purchases through a chat experience right in their whatsapp.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+---
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## ✨ Features
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- 💬 Conversational sales interface
+- 🔐 Authentication with NextAuth.js
+- 🗄️ Database-backed product and order management via Prisma
+- ⚡ Type-safe API with tRPC
+- 🎨 Modern UI with Tailwind CSS and shadcn/ui
+- 📦 Built on the T3 Stack for a robust, full-stack TypeScript experience
 
-## Learn More
+---
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## 🛠️ Tech Stack
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+| Layer | Technology |
+|---|---|
+| Framework | [Next.js](https://nextjs.org) |
+| API | [tRPC](https://trpc.io) |
+| ORM | [Prisma](https://prisma.io) |
+| Auth | [NextAuth.js](https://next-auth.js.org) |
+| Styling | [Tailwind CSS](https://tailwindcss.com) |
+| Package Manager | [pnpm](https://pnpm.io) |
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+---
 
-## How do I deploy this?
+## 🚀 Getting Started
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Prerequisites
+
+- Node.js 18+
+- pnpm
+- Docker (for local database) or a PostgreSQL instance
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/jdalmeida/ezbuy.git
+cd ezbuy
+
+# Install dependencies
+pnpm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+### Database Setup
+
+You can start a local PostgreSQL database using the provided script:
+
+```bash
+./start-database.sh
+```
+
+Then run the Prisma migrations:
+
+```bash
+pnpm prisma migrate dev
+```
+
+### Running the App
+
+```bash
+pnpm dev
+```
+
+The app will be available at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## ⚙️ Environment Variables
+
+Copy `.env.example` to `.env` and fill in the required values:
+
+```env
+# Database
+DATABASE_URL="postgresql://..."
+
+# NextAuth
+NEXTAUTH_SECRET="your-secret"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Add any other provider keys as needed
+```
+
+---
+
+## 🗂️ Project Structure
+
+```
+ezbuy/
+├── prisma/          # Database schema and migrations
+├── public/          # Static assets
+├── src/             # Application source code
+│   ├── pages/       # Next.js pages
+│   ├── server/      # tRPC routers and server logic
+│   └── components/  # UI components
+├── .env.example     # Environment variable template
+└── start-database.sh # Local DB startup script
+```
+
+---
+
+## 📦 Deployment
+
+This project can be deployed to Vercel, Netlify, or Docker. Refer to the [T3 Stack deployment docs](https://create.t3.gg/en/deployment/vercel) for detailed instructions.
+
+---
+
+## 📄 License
+
+This project is open-sourced under the [MIT License](LICENSE).
+
+---
+
+## 🙏 Acknowledgements
+
+Bootstrapped with [create-t3-app](https://create.t3.gg/).
